@@ -1,11 +1,10 @@
-// Disable Right Click
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
-  return false;
 });
 
-// Disable Key Shortcuts
+// Disable key shortcuts
 document.addEventListener("keydown", function (e) {
+
   // F12
   if (e.key === "F12") {
     e.preventDefault();
@@ -16,14 +15,26 @@ document.addEventListener("keydown", function (e) {
   if (
     e.ctrlKey &&
     e.shiftKey &&
-    (e.key === "I" || e.key === "J" || e.key === "C")
+    ["i", "j", "c"].includes(e.key.toLowerCase())
   ) {
     e.preventDefault();
     return false;
   }
 
   // Ctrl + U (View Source)
-  if (e.ctrlKey && e.key === "U") {
+  if (e.ctrlKey && e.key.toLowerCase() === "u") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl + S (Save)
+  if (e.ctrlKey && e.key.toLowerCase() === "s") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl + P (Print)
+  if (e.ctrlKey && e.key.toLowerCase() === "p") {
     e.preventDefault();
     return false;
   }
