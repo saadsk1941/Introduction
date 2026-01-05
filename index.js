@@ -1,7 +1,30 @@
-document.addEventListener("contextmenu", (e) => e.preventDefault());
+// Disable Right Click
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+  return false;
+});
 
-document.onkeydown = function(e) {
-    if (e.keyCode === 123) return false;
-    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) return false;
-    if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) return false;
-};
+// Disable Key Shortcuts
+document.addEventListener("keydown", function (e) {
+  // F12
+  if (e.key === "F12") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl + Shift + I / J / C
+  if (
+    e.ctrlKey &&
+    e.shiftKey &&
+    (e.key === "I" || e.key === "J" || e.key === "C")
+  ) {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl + U (View Source)
+  if (e.ctrlKey && e.key === "U") {
+    e.preventDefault();
+    return false;
+  }
+});
